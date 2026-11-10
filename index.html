@@ -11,6 +11,8 @@
     --orange:#f39c3d; --orange2:#e8892a;
     --ink:#1c2430; --muted:#5b6572; --line:#e2e8f0;
     --card:#f6f8fb; --bg:#ffffff; --soft:#eaf2f8;
+    --shadow:0 6px 24px rgba(10,46,74,.10);
+    --shadow-lg:0 14px 40px rgba(10,46,74,.18);
   }
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
@@ -21,58 +23,108 @@
   .wrap{max-width:1080px; margin:0 auto; padding:0 22px;}
 
   /* ---------- nav ---------- */
-  .nav{position:sticky; top:0; z-index:50; background:var(--navy); box-shadow:0 2px 10px rgba(4,26,43,.25);}
-  .nav .wrap{display:flex; align-items:center; justify-content:space-between; gap:16px; padding-top:12px; padding-bottom:12px; flex-wrap:wrap;}
+  .nav{position:sticky; top:0; z-index:60; background:var(--navy); box-shadow:0 2px 10px rgba(4,26,43,.25);}
+  .nav .wrap{display:flex; align-items:center; justify-content:space-between; gap:16px; padding-top:11px; padding-bottom:11px; flex-wrap:wrap;}
   .brand{color:#fff; font-weight:700; font-size:1.06rem; letter-spacing:.3px; text-decoration:none; white-space:nowrap;}
   .brand span{color:var(--orange);}
-  .nav nav{display:flex; gap:20px; flex-wrap:wrap;}
+  .nav nav{display:flex; gap:18px; flex-wrap:wrap; align-items:center;}
   .nav nav a{color:#cfdde9; text-decoration:none; font-size:.92rem;}
   .nav nav a:hover{color:var(--orange);}
+  .nav nav a.nav-cta{background:var(--orange); color:#231303; font-weight:700; padding:8px 18px; border-radius:7px;}
+  .nav nav a.nav-cta:hover{background:var(--orange2); color:#231303;}
 
   /* ---------- hero ---------- */
-  .hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 55%,var(--navy3) 100%); color:#fff; padding:76px 0 84px;}
+  .hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 55%,var(--navy3) 100%); color:#fff; padding:72px 0 84px;}
+  .hero .wrap{display:grid; grid-template-columns:1.15fr .85fr; gap:44px; align-items:center;}
   .hero .kicker{color:var(--orange); font-weight:700; letter-spacing:2.5px; font-size:.8rem; text-transform:uppercase;}
-  .hero h1{font-size:2.7rem; line-height:1.18; margin:16px 0 10px; max-width:760px;}
+  .hero h1{font-size:2.6rem; line-height:1.18; margin:16px 0 10px;}
   .hero h1 em{font-style:normal; color:var(--orange);}
-  .hero .studio{font-size:1.22rem; font-weight:600; color:#dcebf7;}
-  .hero p.lead{margin-top:16px; color:#b9cee0; font-size:1.04rem; max-width:640px;}
+  .hero .studio{font-size:1.18rem; font-weight:600; color:#dcebf7;}
+  .hero p.lead{margin-top:16px; color:#b9cee0; font-size:1.03rem;}
   .hero .cta{margin-top:30px; display:flex; gap:14px; flex-wrap:wrap; align-items:center;}
   .btn{display:inline-block; background:var(--orange); color:#231303; font-weight:700; text-decoration:none;
-       padding:13px 28px; border-radius:8px; font-size:1rem;}
+       padding:13px 28px; border-radius:8px; font-size:1rem; border:none; cursor:pointer; font-family:inherit;}
   .btn:hover{background:var(--orange2);}
   .btn.ghost{background:transparent; color:#fff; border:1.5px solid #7fa6c4; font-weight:600;}
   .btn.ghost:hover{border-color:var(--orange); color:var(--orange);}
+  .btn.small{padding:9px 20px; font-size:.92rem; width:100%; text-align:center;}
   .hero .mail{color:#dcebf7; font-size:.97rem;}
   .hero .mail a{color:#fff; font-weight:600;}
+  .hero-visual{position:relative;}
+  .hero-visual .frame{background:#fff; border-radius:14px; padding:10px; box-shadow:var(--shadow-lg); transform:rotate(1.2deg);}
+  .hero-visual .frame img{border-radius:8px;}
+  .hero-visual .chip{position:absolute; left:-14px; bottom:26px; background:var(--navy); color:#fff; font-size:.85rem; font-weight:600;
+       padding:9px 16px; border-radius:999px; box-shadow:var(--shadow); border:1.5px solid var(--orange);}
+  .hero-visual .chip b{color:var(--orange);}
 
   /* ---------- sections ---------- */
-  section{padding:62px 0 8px;}
+  section{padding:64px 0 10px;}
   section.alt{background:#fbfcfd;}
+  section.tint{background:var(--soft);}
   .sec-head{margin-bottom:30px;}
   .sec-head .tag{color:var(--orange2); font-weight:700; letter-spacing:2px; font-size:.76rem; text-transform:uppercase;}
   .sec-head h2{font-size:1.75rem; margin-top:6px; color:var(--navy);}
   .sec-head p{color:var(--muted); margin-top:8px; max-width:680px;}
 
-  /* services */
+  /* product cards */
   .grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
-  .card{background:var(--card); border:1px solid var(--line); border-top:4px solid var(--navy2); border-radius:12px; padding:26px 24px;}
-  .card:hover{border-top-color:var(--orange);}
+  .card{background:#fff; border:1px solid var(--line); border-radius:14px; padding:26px 24px; box-shadow:0 2px 10px rgba(10,46,74,.05);
+       display:flex; flex-direction:column; transition:box-shadow .18s ease, transform .18s ease;}
+  .card:hover{box-shadow:var(--shadow); transform:translateY(-2px);}
+  .card .icon{width:46px; height:46px; border-radius:12px; background:var(--soft); display:flex; align-items:center; justify-content:center;
+       font-size:1.35rem; margin-bottom:14px;}
   .card h3{font-size:1.12rem; color:var(--navy); margin-bottom:9px;}
   .card p{font-size:.94rem; color:var(--muted);}
   .card ul{margin:13px 0 0 18px; font-size:.9rem; color:var(--muted);}
   .card ul li{margin:4px 0;}
-  .price{margin-top:16px; font-weight:700; font-size:1rem; color:var(--ink);}
+  .card .card-foot{margin-top:auto; padding-top:18px;}
+  .price{font-weight:700; font-size:1rem; color:var(--ink); margin-bottom:12px;}
   .price span{color:var(--orange2); font-size:1.12rem;}
+
+  /* flagship (tiered) cards */
+  .flagship{background:#fff; border:1px solid var(--line); border-radius:14px; box-shadow:0 2px 10px rgba(10,46,74,.05);
+       padding:28px 26px; margin-bottom:18px; transition:box-shadow .18s ease;}
+  .flagship:hover{box-shadow:var(--shadow);}
+  .flagship .f-head{display:flex; gap:16px; align-items:flex-start;}
+  .flagship .icon{width:46px; height:46px; flex:none; border-radius:12px; background:var(--soft); display:flex; align-items:center; justify-content:center; font-size:1.35rem;}
+  .flagship h3{font-size:1.2rem; color:var(--navy); margin-bottom:6px;}
+  .flagship .f-head p{font-size:.94rem; color:var(--muted); max-width:820px;}
+  .tiers{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:22px;}
+  .tier{border:1.5px solid var(--line); border-radius:12px; padding:20px 18px; display:flex; flex-direction:column; background:var(--card); position:relative;}
+  .tier.featured{border-color:var(--orange); background:#fffaf3;}
+  .tier .t-chip{position:absolute; top:-11px; left:16px; background:var(--orange); color:#231303; font-size:.72rem; font-weight:700;
+       letter-spacing:.6px; text-transform:uppercase; padding:3px 10px; border-radius:999px;}
+  .tier h4{font-size:1rem; color:var(--navy);}
+  .tier .t-price{font-size:1.45rem; font-weight:800; color:var(--ink); margin:6px 0 4px;}
+  .tier .t-price small{font-size:.82rem; font-weight:600; color:var(--muted);}
+  .tier ul{margin:8px 0 0 17px; font-size:.88rem; color:var(--muted);}
+  .tier ul li{margin:4px 0;}
+  .tier .card-foot{margin-top:auto; padding-top:16px;}
 
   /* samples */
   figure.sample{background:#fff; border:1px solid var(--line); border-radius:12px; overflow:hidden; margin-bottom:22px;
        box-shadow:0 3px 14px rgba(10,46,74,.06);}
   figure.sample figcaption{padding:14px 20px; font-size:.93rem; color:var(--muted); border-top:1px solid var(--line);}
   figure.sample figcaption b{color:var(--navy);}
+  .ba-wrap{position:relative; overflow:hidden; --pos:50%; user-select:none; touch-action:none; background:#111;}
+  .ba-wrap img{display:block; width:100%; height:auto;}
+  .ba-after{position:relative;}
+  .ba-before{position:absolute; inset:0; clip-path:inset(0 calc(100% - var(--pos)) 0 0);}
+  .ba-before img{width:100%; height:100%; object-fit:cover;}
+  .ba-handle{position:absolute; top:0; bottom:0; left:var(--pos); width:3px; background:var(--orange); transform:translateX(-50%);
+       box-shadow:0 0 0 1px rgba(0,0,0,.25); pointer-events:none;}
+  .ba-handle::after{content:"◂ ▸"; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+       background:var(--orange); color:#231303; font-weight:800; font-size:.8rem; padding:8px 10px; border-radius:999px; white-space:nowrap;
+       box-shadow:0 4px 14px rgba(0,0,0,.35);}
+  .ba-label{position:absolute; top:14px; font-size:.75rem; font-weight:700; letter-spacing:1px; text-transform:uppercase;
+       background:rgba(10,46,74,.78); color:#fff; padding:5px 12px; border-radius:999px; pointer-events:none;}
+  .ba-label.before{left:14px;} .ba-label.after{right:14px;}
+  .ba-range{position:absolute; inset:0; width:100%; height:100%; opacity:0; cursor:ew-resize; margin:0;}
+  .ba-hint{font-size:.88rem; color:var(--muted); text-align:center; margin-top:10px;}
 
   /* process */
   .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
-  .step{background:var(--soft); border-radius:12px; padding:24px 20px;}
+  .step{background:#fff; border:1px solid var(--line); border-radius:12px; padding:24px 20px; box-shadow:0 2px 10px rgba(10,46,74,.05);}
   .step .num{display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%;
        background:var(--navy2); color:#fff; font-weight:700; margin-bottom:12px;}
   .step h3{font-size:1rem; color:var(--navy); margin-bottom:7px;}
@@ -86,34 +138,70 @@
   table.price-table th:last-child{text-align:right;}
   .price-note{color:var(--muted); font-size:.92rem; margin-top:12px;}
 
+  /* order */
+  .order-grid{display:grid; grid-template-columns:1.25fr .75fr; gap:22px; align-items:start;}
+  form.order-form{background:#fff; border:1px solid var(--line); border-radius:14px; box-shadow:var(--shadow); padding:30px 28px;}
+  form.order-form label{display:block; font-weight:600; font-size:.92rem; color:var(--navy); margin:16px 0 6px;}
+  form.order-form label:first-child{margin-top:0;}
+  form.order-form input, form.order-form select, form.order-form textarea{
+       width:100%; padding:12px 14px; border:1.5px solid var(--line); border-radius:9px; font:inherit; font-size:.95rem; color:var(--ink); background:#fff;}
+  form.order-form input:focus, form.order-form select:focus, form.order-form textarea:focus{outline:none; border-color:var(--orange);}
+  form.order-form textarea{min-height:120px; resize:vertical;}
+  form.order-form .btn{width:100%; margin-top:22px; padding:15px;}
+  .form-note{font-size:.87rem; color:var(--muted); margin-top:12px;}
+  .order-aside{background:var(--navy); color:#fff; border-radius:14px; padding:28px 26px; box-shadow:var(--shadow);}
+  .order-aside h3{font-size:1.1rem; margin-bottom:14px;}
+  .order-aside ol{margin:0 0 18px 20px; font-size:.93rem; color:#cfdde9;}
+  .order-aside ol li{margin:9px 0;}
+  .order-aside ol b{color:#fff;}
+  .order-aside .files-note{background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); border-radius:10px; padding:14px 16px; font-size:.9rem; color:#dcebf7;}
+  .order-aside .files-note b{color:var(--orange);}
+
+  /* policies */
+  .pol-grid{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  .pol{background:#fff; border:1px solid var(--line); border-left:4px solid var(--orange); border-radius:12px; padding:24px 22px; box-shadow:0 2px 10px rgba(10,46,74,.05);}
+  .pol h3{font-size:1.03rem; color:var(--navy); margin-bottom:8px;}
+  .pol p{font-size:.92rem; color:var(--muted);}
+
   /* faq */
   .faq-item{border:1px solid var(--line); border-radius:10px; padding:20px 22px; margin-bottom:12px; background:#fff;}
   .faq-item h3{font-size:1rem; color:var(--navy); margin-bottom:6px;}
   .faq-item p{font-size:.93rem; color:var(--muted);}
 
   /* contact */
-  .contact-band{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%); border-radius:14px; padding:42px 38px; color:#fff; margin-bottom:10px;}
+  .contact-band{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%); border-radius:14px; padding:42px 38px; color:#fff; margin-bottom:10px; box-shadow:var(--shadow);}
   .contact-band h2{color:#fff; font-size:1.6rem; margin-bottom:10px;}
   .contact-band p{color:#b9cee0; max-width:620px;}
   .contact-band .mail-big{margin-top:20px; font-size:1.25rem;}
   .contact-band .mail-big a{color:var(--orange); font-weight:700; text-decoration:none;}
   .contact-band .mail-big a:hover{text-decoration:underline;}
+  .contact-band .btn{margin-top:22px;}
 
   footer{margin-top:56px; padding:24px 0 36px; border-top:1px solid var(--line); text-align:center; color:var(--muted); font-size:.86rem;}
   footer .fnav{margin-bottom:8px;}
   footer .fnav a{color:var(--muted); text-decoration:none; margin:0 8px;}
   footer .fnav a:hover{color:var(--orange2);}
 
-  @media (max-width:820px){ .steps{grid-template-columns:1fr 1fr;} }
+  @media (max-width:900px){
+    .tiers{grid-template-columns:1fr;}
+    .order-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:820px){
+    .steps{grid-template-columns:1fr 1fr;}
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-visual{max-width:420px;}
+  }
   @media (max-width:640px){
     .grid{grid-template-columns:1fr;}
+    .pol-grid{grid-template-columns:1fr;}
     .steps{grid-template-columns:1fr;}
     .hero{padding:52px 0 60px;}
     .hero h1{font-size:2rem;}
-    section{padding:44px 0 4px;}
+    section{padding:46px 0 4px;}
     .contact-band{padding:32px 24px;}
     .nav .wrap{justify-content:center; text-align:center;}
-    .nav nav{justify-content:center; gap:14px;}
+    .nav nav{justify-content:center; gap:13px;}
+    form.order-form{padding:24px 18px;}
   }
 </style>
 </head>
@@ -129,7 +217,9 @@
       <a href="#process">Process</a>
       <a href="#pricing">Pricing</a>
       <a href="#faq">FAQ</a>
+      <a href="#policies">Policies</a>
       <a href="#contact">Contact</a>
+      <a class="nav-cta" href="#order">Order</a>
     </nav>
   </div>
 </div>
@@ -137,14 +227,22 @@
 <!-- ============ HERO ============ -->
 <header class="hero" id="top">
   <div class="wrap">
-    <div class="kicker">Guangzhou · China</div>
-    <h1>Old photos restored, decks polished, memories <em>brought back to life</em>.</h1>
-    <p class="studio">Hongmo Digital Studio — digital design &amp; AI media services for individuals and small businesses.</p>
-    <p class="lead">A small independent studio for custom digital work: photo restoration, presentation design, data analysis, small websites, transcription, document digitization, research reports and AI memorial videos. Every order is quoted up front, made to order, and checked by a person before delivery.</p>
-    <div class="cta">
-      <a class="btn" href="#contact">Contact Us</a>
-      <a class="btn ghost" href="#samples">See Work Samples</a>
-      <span class="mail">Email: <a href="mailto:hongmosu@gmail.com">hongmosu@gmail.com</a></span>
+    <div>
+      <div class="kicker">Guangzhou · China</div>
+      <h1>Old photos restored, decks polished, memories <em>brought back to life</em>.</h1>
+      <p class="studio">Hongmo Digital Studio — digital design &amp; AI media services for individuals and small businesses.</p>
+      <p class="lead">A small independent studio for custom digital work: photo restoration, presentation design, data analysis, small websites, transcription, document digitization, research reports and AI memorial videos. Every order is quoted up front, made to order, and checked by a person before delivery.</p>
+      <div class="cta">
+        <a class="btn" href="#order">Order Now</a>
+        <a class="btn ghost" href="#samples">See Work Samples</a>
+        <span class="mail">Email: <a href="mailto:hongmosu@gmail.com">hongmosu@gmail.com</a></span>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="frame">
+        <img src="assets/sample-photo-after.jpg" alt="Sample result: a black-and-white family portrait restored and colorized">
+      </div>
+      <div class="chip">Photo restoration sample — <b>before → after below</b></div>
     </div>
   </div>
 </header>
@@ -154,34 +252,108 @@
   <div class="wrap">
     <div class="sec-head">
       <div class="tag">What we do</div>
-      <h2>Services</h2>
-      <p>Eight made-to-order services — everything below is work we actually deliver in-house. Tell us what you need, get a fixed quote, and receive print-ready or ready-to-present digital files.</p>
+      <h2>Services &amp; Packages</h2>
+      <p>Everything below is work we actually deliver in-house, priced as ready-to-order packages. Pick a service, place an order request, and receive a fixed quote before any work — or any payment — begins.</p>
     </div>
+
+    <!-- Flagship: Photo Restoration -->
+    <div class="flagship">
+      <div class="f-head">
+        <div class="icon">📷</div>
+        <div>
+          <h3>Old Photo Restoration &amp; Colorization</h3>
+          <p>We restore faded, scratched or damaged family photos with careful digital repair, and colorize black-and-white portraits followed by manual color correction. The result keeps the person looking like themselves — never over-smoothed or “AI-looking.” Print-ready high-resolution files, delivered digitally.</p>
+        </div>
+      </div>
+      <div class="tiers">
+        <div class="tier">
+          <h4>Restore</h4>
+          <div class="t-price">$29 <small>/ photo</small></div>
+          <ul>
+            <li>Scratch, stain and mold-spot repair</li>
+            <li>Basic enhancement: contrast, sharpness, fading</li>
+            <li>High-resolution print-ready delivery</li>
+            <li>2 small revisions included</li>
+          </ul>
+          <div class="card-foot"><button type="button" class="btn small order-btn" data-service="photo" data-package="Restore — $29">Order Restore</button></div>
+        </div>
+        <div class="tier featured">
+          <span class="t-chip">Recommended</span>
+          <h4>Restore + Colorize</h4>
+          <div class="t-price">$49 <small>/ photo</small></div>
+          <ul>
+            <li>Everything in Restore</li>
+            <li>Full colorization of black-and-white photos</li>
+            <li>Manual color correction — skin, hair and clothing tones checked by hand</li>
+            <li>2 small revisions included</li>
+          </ul>
+          <div class="card-foot"><button type="button" class="btn small order-btn" data-service="photo" data-package="Restore + Colorize — $49">Order Restore + Colorize</button></div>
+        </div>
+        <div class="tier">
+          <h4>Premium Restoration</h4>
+          <div class="t-price">from $99 <small>/ photo</small></div>
+          <ul>
+            <li>For severely damaged originals</li>
+            <li>We assess the damage and send a small preview sample before quoting</li>
+            <li>Final price confirmed with your fixed quote</li>
+            <li>Honest limit: large missing areas (faces, people) cannot be promised</li>
+          </ul>
+          <div class="card-foot"><button type="button" class="btn small order-btn" data-service="photo" data-package="Premium Restoration — from $99">Order Premium</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flagship: Presentation Design -->
+    <div class="flagship">
+      <div class="f-head">
+        <div class="icon">📑</div>
+        <div>
+          <h3>Presentation Design &amp; Document Formatting</h3>
+          <p>Cleanup and redesign of PowerPoint decks — yearly summaries, thesis defenses, business reports — plus professional Word document formatting. Send us the draft you have; we hand back a deck that is ready to present.</p>
+        </div>
+      </div>
+      <div class="tiers">
+        <div class="tier">
+          <h4>Essential Polish</h4>
+          <div class="t-price">$99 <small>/ project</small></div>
+          <ul>
+            <li>Beautify and reformat your existing deck</li>
+            <li>One consistent visual style throughout</li>
+            <li>Fonts, spacing and alignment cleaned up</li>
+            <li>2 small revisions included</li>
+          </ul>
+          <div class="card-foot"><button type="button" class="btn small order-btn" data-service="ppt" data-package="Essential Polish — $99">Order Essential</button></div>
+        </div>
+        <div class="tier featured">
+          <span class="t-chip">Recommended</span>
+          <h4>Standard Redesign</h4>
+          <div class="t-price">$199 <small>/ project</small></div>
+          <ul>
+            <li>Everything in Essential Polish</li>
+            <li>Page layouts restructured for a clearer story</li>
+            <li>Charts rebuilt with clear data labels</li>
+            <li>2 small revisions included</li>
+          </ul>
+          <div class="card-foot"><button type="button" class="btn small order-btn" data-service="ppt" data-package="Standard Redesign — $199">Order Standard</button></div>
+        </div>
+        <div class="tier">
+          <h4>Premium</h4>
+          <div class="t-price">from $299 <small>/ project</small></div>
+          <ul>
+            <li>Everything in Standard Redesign</li>
+            <li>Content and logic restructuring — we rebuild the argument, not just the slides</li>
+            <li>Full custom design across the deck</li>
+            <li>Rush deadlines available — quoted separately</li>
+          </ul>
+          <div class="card-foot"><button type="button" class="btn small order-btn" data-service="ppt" data-package="Premium — from $299">Order Premium</button></div>
+        </div>
+      </div>
+    </div>
+
     <div class="grid">
 
       <div class="card">
-        <h3>Old Photo Restoration &amp; Colorization</h3>
-        <p>We restore faded, scratched or damaged family photos with careful digital repair, and colorize black-and-white portraits followed by manual color correction. The result keeps the person looking like themselves — never over-smoothed or “AI-looking.”</p>
-        <ul>
-          <li>Scratch, stain and background-damage repair</li>
-          <li>Black-and-white colorization with hand-checked color</li>
-          <li>Print-ready high-resolution delivery</li>
-        </ul>
-        <p class="price">From <span>$29</span> per photo</p>
-      </div>
-
-      <div class="card">
-        <h3>Presentation Design &amp; Document Formatting</h3>
-        <p>Cleanup and redesign of PowerPoint decks — yearly summaries, thesis defenses, business reports — plus professional Word document formatting. We restructure the content, rebuild the charts and hand back a deck that is ready to present.</p>
-        <ul>
-          <li>Full visual redesign of existing drafts</li>
-          <li>Charts rebuilt with clear data labels</li>
-          <li>Rush turnaround available for deadlines</li>
-        </ul>
-        <p class="price">From <span>$99</span> per project</p>
-      </div>
-
-      <div class="card">
+        <div class="icon">📊</div>
         <h3>Data Analysis &amp; Visualization</h3>
         <p>Messy spreadsheet in, clear answers out. We clean and organize Excel/CSV data, run the statistics, and present the results as clean charts and a readable PDF analysis report — so you can see what your numbers actually say.</p>
         <ul>
@@ -189,10 +361,14 @@
           <li>Summary statistics and cross-tab analysis</li>
           <li>Charts plus a written PDF report</li>
         </ul>
-        <p class="price">From <span>$79</span> per project</p>
+        <div class="card-foot">
+          <p class="price">From <span>$79</span> per project</p>
+          <button type="button" class="btn small order-btn" data-service="data" data-package="Standard">Order Data Analysis</button>
+        </div>
       </div>
 
       <div class="card">
+        <div class="icon">🌐</div>
         <h3>Website Building &amp; Maintenance</h3>
         <p>Small static websites for individuals and small businesses — like this very site: fast, mobile-friendly and inexpensive to run. After launch, we can keep the content updated for you, so the site never goes stale.</p>
         <ul>
@@ -200,10 +376,14 @@
           <li>Mobile-friendly, no heavy platform fees</li>
           <li>Ongoing content updates and maintenance from $29/month</li>
         </ul>
-        <p class="price">From <span>$149</span> per site</p>
+        <div class="card-foot">
+          <p class="price">From <span>$149</span> per site</p>
+          <button type="button" class="btn small order-btn" data-service="web" data-package="Standard">Order a Website</button>
+        </div>
       </div>
 
       <div class="card">
+        <div class="icon">🎙️</div>
         <h3>Audio &amp; Video Transcription</h3>
         <p>Chinese and English recordings turned into accurate text. We combine AI transcription with a human proofreading pass, and deliver clean transcripts or subtitle-ready text files.</p>
         <ul>
@@ -211,10 +391,14 @@
           <li>AI transcription plus manual correction</li>
           <li>Plain text, Word or subtitle formats</li>
         </ul>
-        <p class="price">From <span>$15</span> per file</p>
+        <div class="card-foot">
+          <p class="price">From <span>$15</span> per file</p>
+          <button type="button" class="btn small order-btn" data-service="transcription" data-package="Standard">Order Transcription</button>
+        </div>
       </div>
 
       <div class="card">
+        <div class="icon">📄</div>
         <h3>OCR &amp; Document Digitization</h3>
         <p>Scanned pages and photos of documents converted into editable text and tidy Word files. Tables and layout are reconstructed as closely as the source allows, and every page is spot-checked by a person.</p>
         <ul>
@@ -222,10 +406,14 @@
           <li>Chinese and English documents</li>
           <li>Delivered as Word or searchable PDF</li>
         </ul>
-        <p class="price">From <span>$15</span> per job</p>
+        <div class="card-foot">
+          <p class="price">From <span>$15</span> per job</p>
+          <button type="button" class="btn small order-btn" data-service="ocr" data-package="Standard">Order OCR</button>
+        </div>
       </div>
 
       <div class="card">
+        <div class="icon">🔎</div>
         <h3>Research Reports</h3>
         <p>Market, competitor and topic research compiled into a structured written report. We cross-check facts across multiple sources and cite where each key claim comes from, so you can rely on the conclusions.</p>
         <ul>
@@ -233,10 +421,14 @@
           <li>Multi-source fact checking with citations</li>
           <li>Clear structure: findings first, detail after</li>
         </ul>
-        <p class="price">From <span>$99</span> per report</p>
+        <div class="card-foot">
+          <p class="price">From <span>$99</span> per report</p>
+          <button type="button" class="btn small order-btn" data-service="research" data-package="Standard">Order a Report</button>
+        </div>
       </div>
 
       <div class="card">
+        <div class="icon">🕊️</div>
         <h3>AI Memorial Video Production</h3>
         <p>A made-to-order memorial service for families: from a cherished photo and existing recordings, we produce a short commemorative video in which a departed loved one appears to speak words the family provides and approves. This service is offered only with the written authorization of the family and close relatives, and solely for private family remembrance.</p>
         <ul>
@@ -244,7 +436,10 @@
           <li>Voice and likeness used only within the authorized scope</li>
           <li>Delivered as a private video file for the family</li>
         </ul>
-        <p class="price">From <span>$79</span> per video</p>
+        <div class="card-foot">
+          <p class="price">From <span>$79</span> per video</p>
+          <button type="button" class="btn small order-btn" data-service="memorial" data-package="Standard">Order a Memorial Video</button>
+        </div>
       </div>
 
     </div>
@@ -261,8 +456,18 @@
     </div>
 
     <figure class="sample">
-      <img src="assets/sample-photo-colorization.jpg" alt="Before and after: black-and-white family photo colorized" loading="lazy">
-      <figcaption><b>Sample: black-and-white photo colorization.</b> A 1930s family portrait — restored and colorized with separated skin, hair and clothing tones, with the original faces left untouched.</figcaption>
+      <div class="ba-wrap" id="baSlider">
+        <img class="ba-after" src="assets/sample-photo-after.jpg" alt="After: the family portrait restored and colorized">
+        <div class="ba-before">
+          <img src="assets/sample-photo-before.jpg" alt="Before: the original black-and-white family portrait">
+        </div>
+        <span class="ba-label before">Before</span>
+        <span class="ba-label after">After</span>
+        <div class="ba-handle"></div>
+        <input class="ba-range" id="baRange" type="range" min="0" max="100" value="50" aria-label="Reveal the before and after images">
+      </div>
+      <figcaption><b>Sample: black-and-white photo colorization.</b> A 1930s family portrait — restored and colorized with separated skin, hair and clothing tones, with the original faces left untouched.
+      <div class="ba-hint">Drag the slider to compare before and after.</div></figcaption>
     </figure>
 
     <figure class="sample">
@@ -279,29 +484,91 @@
     <div class="sec-head">
       <div class="tag">How it works</div>
       <h2>Process</h2>
-      <p>Simple and transparent, from first email to final file.</p>
+      <p>Simple and transparent, from order form to final file.</p>
     </div>
     <div class="steps">
       <div class="step">
         <span class="num">1</span>
-        <h3>Tell us what you need</h3>
-        <p>Email us your project and attach sample files if you have them. We usually reply within one business day.</p>
+        <h3>Submit your request</h3>
+        <p>Fill in the order form below — service, package and what you need. It opens your email app with everything filled in; just press send.</p>
       </div>
       <div class="step">
         <span class="num">2</span>
-        <h3>Fixed quote</h3>
-        <p>We confirm the scope together and give you one fixed price before any work begins. No surprises later.</p>
+        <h3>Fixed quote + payment link</h3>
+        <p>We confirm the scope and reply with one fixed price and a PayPal payment link. No surprises later, and no obligation until you approve.</p>
       </div>
       <div class="step">
         <span class="num">3</span>
         <h3>Pay via PayPal</h3>
-        <p>Pay through a PayPal invoice or payment link we send you. Work starts as soon as payment is confirmed.</p>
+        <p>Pay through the PayPal link or invoice we send you. Work starts as soon as payment is confirmed.</p>
       </div>
       <div class="step">
         <span class="num">4</span>
-        <h3>Digital delivery</h3>
-        <p>Finished files are delivered by email or download link for your confirmation. Small revisions are included.</p>
+        <h3>Production &amp; delivery</h3>
+        <p>Finished files are delivered by email or download link for your confirmation. Two small revisions are included with every order.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ORDER ============ -->
+<section id="order" class="tint">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="tag">Place an order</div>
+      <h2>Order Form</h2>
+      <p>Tell us what you need. Submitting opens your email app with the order pre-filled — review it and press send, and we will reply with your fixed quote.</p>
+    </div>
+    <div class="order-grid">
+      <form class="order-form" id="orderForm">
+        <label for="fService">Service</label>
+        <select id="fService" required>
+          <option value="photo">Old Photo Restoration &amp; Colorization</option>
+          <option value="ppt">Presentation Design &amp; Document Formatting</option>
+          <option value="data">Data Analysis &amp; Visualization</option>
+          <option value="web">Website Building &amp; Maintenance</option>
+          <option value="transcription">Audio &amp; Video Transcription</option>
+          <option value="ocr">OCR &amp; Document Digitization</option>
+          <option value="research">Research Reports</option>
+          <option value="memorial">AI Memorial Video Production</option>
+        </select>
+
+        <label for="fPackage">Package</label>
+        <select id="fPackage" required></select>
+
+        <label for="fName">Your name</label>
+        <input id="fName" type="text" placeholder="e.g. Alex Chen" required>
+
+        <label for="fEmail">Your email</label>
+        <input id="fEmail" type="email" placeholder="you@example.com" required>
+
+        <label for="fDetails">What do you need?</label>
+        <textarea id="fDetails" placeholder="Describe your project: how many photos / pages / minutes, what condition the originals are in, your deadline, and anything else we should know." required></textarea>
+
+        <button class="btn" type="submit">Send Order Request</button>
+        <p class="form-note">Pressing the button opens your email app with the order addressed to hongmosu@gmail.com and pre-filled with the details above — nothing is sent until you press send there. If no email app opens, please email the same details to <b>hongmosu@gmail.com</b> directly.</p>
+      </form>
+
+      <aside class="order-aside">
+        <h3>How ordering works</h3>
+        <ol>
+          <li><b>Submit your request</b> with the form — it takes a minute.</li>
+          <li><b>Receive a fixed quote</b> and a PayPal payment link by email.</li>
+          <li><b>Pay via PayPal</b> — work starts once payment is confirmed.</li>
+          <li><b>We produce and deliver</b> your files digitally, with 2 small revisions included.</li>
+        </ol>
+        <div class="files-note"><b>Sending your files:</b> after submitting the form, please email your photos, documents or recordings to <b>hongmosu@gmail.com</b> with the same subject line as your order. For very large files, send a download link (Google Drive, Dropbox, WeTransfer…) instead of an attachment.</div>
+        <!-- ============================================================
+             PAYPAL CHECKOUT SLOT — RESERVED, DO NOT REMOVE.
+             Once the PayPal account review is approved, the PayPal
+             payment button / Smart Checkout will be mounted in the
+             #paypal-slot element below (used at step 3 of the order
+             flow, next to the quote confirmation). Until then this
+             slot stays empty on purpose: no placeholder or fake
+             payment buttons are shown anywhere on this site.
+        ============================================================= -->
+        <div id="paypal-slot" hidden></div>
+      </aside>
     </div>
   </div>
 </section>
@@ -324,12 +591,41 @@
       <tr><td>Research Reports</td><td class="p">from $99 / report</td></tr>
       <tr><td>AI Memorial Video Production</td><td class="p">from $79 / video</td></tr>
     </table>
-    <p class="price-note">Prices above are starting points for standard work. Custom work is quoted per project after a short consultation — you always approve the fixed quote before we begin.</p>
+    <p class="price-note">Prices above are starting points for standard work. Package prices for photo restoration and presentation design are listed under <a href="#services">Services &amp; Packages</a>. Custom work is quoted per project after a short consultation — you always approve the fixed quote before we begin.</p>
+  </div>
+</section>
+
+<!-- ============ POLICIES ============ -->
+<section id="policies">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="tag">Our commitments</div>
+      <h2>Policies</h2>
+      <p>The terms every order runs on — written down here so there are no surprises on either side.</p>
+    </div>
+    <div class="pol-grid">
+      <div class="pol">
+        <h3>Revisions</h3>
+        <p>Every order includes <b>2 small revisions</b> after delivery — adjustments such as color tone, wording, layout tweaks or file format. Larger changes that expand the original scope are quoted separately before we proceed, so you always approve any extra cost first.</p>
+      </div>
+      <div class="pol">
+        <h3>Privacy &amp; your files</h3>
+        <p>Your photos, documents and recordings are used <b>only for your order</b> — never shared, resold, published, or used to train models. Source files are deleted after delivery and your confirmation, and finished work is never used for our own promotion without your permission.</p>
+      </div>
+      <div class="pol">
+        <h3>Refunds</h3>
+        <p>Changed your mind before work begins? You receive a <b>full refund</b>. If we find we cannot deliver what was quoted — for example, damage beyond what a preview sample showed — you also receive a full refund. Once work is delivered, any issue is settled by stage: we refund fairly for the stages not completed, as agreed with you.</p>
+      </div>
+      <div class="pol">
+        <h3>Turnaround</h3>
+        <p>Your delivery time is <b>confirmed in writing with your fixed quote</b> before you pay — most photo, transcription and document orders take a few days. Working to a deadline? Rush handling can usually be arranged when agreed in advance.</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ============ FAQ ============ -->
-<section id="faq">
+<section id="faq" class="alt">
   <div class="wrap">
     <div class="sec-head">
       <div class="tag">Good to know</div>
@@ -350,7 +646,7 @@
     </div>
     <div class="faq-item">
       <h3>What if I want changes after delivery?</h3>
-      <p>Small revisions are included with every order — tell us what to adjust and we will revise the files. Larger changes of scope are quoted separately before we proceed.</p>
+      <p>Two small revisions are included with every order — tell us what to adjust and we will revise the files. Larger changes of scope are quoted separately before we proceed. See our <a href="#policies">Policies</a> for details.</p>
     </div>
     <div class="faq-item">
       <h3>What happens to the photos and files I send you?</h3>
@@ -366,6 +662,7 @@
     <div class="contact-band">
       <h2>Start a project</h2>
       <p>Describe what you need and attach sample files if you have them. You will receive a fixed quote and a delivery time — no obligation until you approve the quote.</p>
+      <a class="btn" href="#order">Go to the Order Form</a>
       <p class="mail-big">Email: <a href="mailto:hongmosu@gmail.com">hongmosu@gmail.com</a></p>
     </div>
   </div>
@@ -374,11 +671,102 @@
 <footer>
   <div class="wrap">
     <div class="fnav">
-      <a href="#services">Services</a>·<a href="#samples">Work Samples</a>·<a href="#process">Process</a>·<a href="#pricing">Pricing</a>·<a href="#faq">FAQ</a>·<a href="#contact">Contact</a>
+      <a href="#services">Services</a> · <a href="#samples">Work Samples</a> · <a href="#process">Process</a> · <a href="#order">Order</a> · <a href="#pricing">Pricing</a> · <a href="#faq">FAQ</a> · <a href="#policies">Policies</a> · <a href="#contact">Contact</a>
     </div>
     © 2026 Hongmo Digital Studio. All rights reserved.
   </div>
 </footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- Before/After slider ---------- */
+  var wrap = document.getElementById('baSlider');
+  var range = document.getElementById('baRange');
+  if (wrap && range) {
+    var setPos = function(v){ wrap.style.setProperty('--pos', v + '%'); };
+    range.addEventListener('input', function(){ setPos(range.value); });
+    setPos(range.value);
+  }
+
+  /* ---------- Order form: service -> package linkage ---------- */
+  var SERVICE_NAMES = {
+    photo: 'Old Photo Restoration & Colorization',
+    ppt: 'Presentation Design & Document Formatting',
+    data: 'Data Analysis & Visualization',
+    web: 'Website Building & Maintenance',
+    transcription: 'Audio & Video Transcription',
+    ocr: 'OCR & Document Digitization',
+    research: 'Research Reports',
+    memorial: 'AI Memorial Video Production'
+  };
+  var PACKAGES = {
+    photo: ['Restore — $29', 'Restore + Colorize — $49', 'Premium Restoration — from $99'],
+    ppt: ['Essential Polish — $99', 'Standard Redesign — $199', 'Premium — from $299'],
+    data: ['Standard'],
+    web: ['Standard'],
+    transcription: ['Standard'],
+    ocr: ['Standard'],
+    research: ['Standard'],
+    memorial: ['Standard']
+  };
+
+  var svc = document.getElementById('fService');
+  var pkg = document.getElementById('fPackage');
+
+  function fillPackages(serviceKey, selectedLabel){
+    var list = PACKAGES[serviceKey] || ['Standard'];
+    pkg.innerHTML = '';
+    list.forEach(function(label){
+      var opt = document.createElement('option');
+      opt.value = label;
+      opt.textContent = label;
+      pkg.appendChild(opt);
+    });
+    if (selectedLabel && list.indexOf(selectedLabel) !== -1) {
+      pkg.value = selectedLabel;
+    }
+  }
+  svc.addEventListener('change', function(){ fillPackages(svc.value); });
+  fillPackages(svc.value);
+
+  /* ---------- Order buttons: scroll to form + preselect ---------- */
+  document.querySelectorAll('.order-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var s = btn.getAttribute('data-service');
+      var p = btn.getAttribute('data-package');
+      if (s && SERVICE_NAMES[s]) {
+        svc.value = s;
+        fillPackages(s, p);
+      }
+      document.getElementById('order').scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  /* ---------- Submit: assemble mailto ---------- */
+  document.getElementById('orderForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var serviceName = SERVICE_NAMES[svc.value] || svc.value;
+    var subject = 'Order: ' + serviceName + ' — ' + pkg.value;
+    var lines = [
+      'Name: ' + document.getElementById('fName').value.trim(),
+      'Email: ' + document.getElementById('fEmail').value.trim(),
+      'Service: ' + serviceName,
+      'Package: ' + pkg.value,
+      '',
+      'What I need:',
+      document.getElementById('fDetails').value.trim(),
+      '',
+      'Files: I will send my files by email with this same subject line, or share a download link.'
+    ];
+    var href = 'mailto:hongmosu@gmail.com'
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(lines.join('\n'));
+    window.location.href = href;
+  });
+})();
+</script>
 
 </body>
 </html>
